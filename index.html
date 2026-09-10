@@ -545,6 +545,18 @@
             background: linear-gradient(45deg, #FFE4E1, #FADADD);
         }
 
+        .polaroid .loading {
+            width: 100%;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #FFE4E1, #FADADD);
+            border-radius: 4px;
+            color: var(--text-main);
+            font-size: 0.8em;
+        }
+
         /* تنسيقات مختلفة لكل شاشة */
         .layout-side .polaroid:nth-child(1) { transform: rotate(-3deg); }
         .layout-side .polaroid:nth-child(2) { transform: rotate(3deg); margin-top: 20px; }
@@ -807,7 +819,7 @@
                     وإن شاء الله يكون عام تحقيق أحلامك وكل إشي ببالك ي <span class="highlight">أجدعع مهندسس</span> وأحلى يزنن ،،
                 </p>
                 <p style="margin-top: 10px;">
-                    احمم 🌝 مش محتاج الموضوع أحكيهه بس عامكك هاد هيكون أحلى من كل لقبل لأنك تعرفت عع <span class="highlight">حداا ز[...]
+                    احمم 🌝 مش محتاج الموضوع أحكيهه بس عامكك هاد هيكون أحلى من كل لقبل لأنك تعرفت عع <span class="highlight">حدا ز[...]
                 </p>
                 <p style="margin-top: 15px; font-size: 1.1em;">
                     يلل يبروو إنجويي بيومكك يي أحلى هزونن بحياتيي 😂❤️❤️❤️ ❤️✨
@@ -825,10 +837,12 @@
             <div class="photo-caption">يزن الجميل ❤️</div>
             <div class="photos-grid layout-side">
                 <div class="polaroid stagger-1">
-                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/1.jpg" alt="Yazan 1" onerror="this.style.background='linear-gradient(45deg, #FFE4E1, #FADADD)'">
+                    <div class="loading">جاري التحميل...</div>
+                    <img src="https://cdn.jsdelivr.net/gh/Rahaf1Mahmoud/BD@main/1.jpg" alt="Yazan 1" style="display:none;">
                 </div>
                 <div class="polaroid stagger-2">
-                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/2.jpg" alt="Yazan 2" onerror="this.style.background='linear-gradient(45deg, #FFE4E1, #FADADD)'">
+                    <div class="loading">جاري التحميل...</div>
+                    <img src="https://cdn.jsdelivr.net/gh/Rahaf1Mahmoud/BD@main/2.jpg" alt="Yazan 2" style="display:none;">
                 </div>
             </div>
             <button class="btn" onclick="goTo('screen-photos-1')">
@@ -849,10 +863,12 @@
             <div class="photo-caption">البروو اللطيف ❤️</div>
             <div class="photos-grid layout-stack">
                 <div class="polaroid stagger-1">
-                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/3.jpg" alt="Yazan 3" onerror="this.style.background='linear-gradient(45deg, #FFE4E1, #FADADD)'">
+                    <div class="loading">جاري التحميل...</div>
+                    <img src="https://cdn.jsdelivr.net/gh/Rahaf1Mahmoud/BD@main/3.jpg" alt="Yazan 3" style="display:none;">
                 </div>
                 <div class="polaroid stagger-2">
-                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/4.jpeg" alt="Yazan 4" onerror="this.style.background='linear-gradient(45deg, #FFE4E1, #FADADD)'">
+                    <div class="loading">جاري التحميل...</div>
+                    <img src="https://cdn.jsdelivr.net/gh/Rahaf1Mahmoud/BD@main/4.jpeg" alt="Yazan 4" style="display:none;">
                 </div>
             </div>
             <button class="btn" onclick="goTo('screen-photos-2')">
@@ -873,10 +889,12 @@
             <div class="photo-caption">أحن يزن ❤️</div>
             <div class="photos-grid layout-diagonal">
                 <div class="polaroid stagger-1">
-                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/5.jpeg" alt="Yazan 5" onerror="this.style.background='linear-gradient(45deg, #FFE4E1, #FADADD)'">
+                    <div class="loading">جاري التحميل...</div>
+                    <img src="https://cdn.jsdelivr.net/gh/Rahaf1Mahmoud/BD@main/5.jpeg" alt="Yazan 5" style="display:none;">
                 </div>
                 <div class="polaroid stagger-2">
-                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/6.jpeg" alt="Yazan 6" onerror="this.style.background='linear-gradient(45deg, #FFE4E1, #FADADD)'">
+                    <div class="loading">جاري التحميل...</div>
+                    <img src="https://cdn.jsdelivr.net/gh/Rahaf1Mahmoud/BD@main/6.jpeg" alt="Yazan 6" style="display:none;">
                 </div>
             </div>
             <button class="btn" onclick="goTo('screen-photos-3')">
@@ -897,7 +915,8 @@
             <div class="photo-caption">أحلى مهندس ❤️</div>
             <div class="photos-grid layout-center">
                 <div class="polaroid stagger-1">
-                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/7.jpg" alt="Yazan 7" onerror="this.style.background='linear-gradient(45deg, #FFE4E1, #FADADD)'">
+                    <div class="loading">جاري التحميل...</div>
+                    <img src="https://cdn.jsdelivr.net/gh/Rahaf1Mahmoud/BD@main/7.jpg" alt="Yazan 7" style="display:none;">
                 </div>
             </div>
             <button class="btn" onclick="goTo('screen-final')">
@@ -965,6 +984,24 @@
         }
         createButterflies();
 
+        // ===== تحميل الصور بشكل صحيح =====
+        function loadImages() {
+            document.querySelectorAll('.polaroid img').forEach(img => {
+                img.onload = function() {
+                    this.style.display = 'block';
+                    this.previousElementSibling.style.display = 'none';
+                };
+                img.onerror = function() {
+                    this.previousElementSibling.textContent = '❌ فشل التحميل';
+                };
+                // بدء التحميل
+                img.src = img.src;
+            });
+        }
+
+        // تحميل الصور عند تحميل الصفحة
+        window.addEventListener('load', loadImages);
+
         // ===== التنقل بين الشاشات =====
         function goTo(screenId) {
             document.querySelectorAll('.screen').forEach(s => {
@@ -979,6 +1016,11 @@
                 el.offsetHeight; // trigger reflow
                 el.style.animation = null;
             });
+
+            // محاولة تحميل الصور مجددًا إذا كانت موجودة في الشاشة الحالية
+            if (newScreen.querySelector('.polaroid img')) {
+                loadImages();
+            }
         }
 
         // ===== الرقم السري =====
@@ -1000,7 +1042,7 @@
                 const dot = document.getElementById(`dot-${i}`);
                 if (i < passcode.length) {
                     dot.classList.add('filled');
-                    dot.textContent = '•';
+                    dot.textContent = '●';
                 } else {
                     dot.classList.remove('filled');
                     dot.textContent = '';
@@ -1008,17 +1050,18 @@
             }
         }
 
-        function checkPasscode() {
-            if (passcode === correctPasscode) {
-                goTo('screen-nickname');
-            } else {
-                goTo('screen-wrong');
-            }
-        }
-
         function clearPasscode() {
             passcode = '';
             updateDisplay();
+        }
+
+        function checkPasscode() {
+            if (passcode === correctPasscode) {
+                goTo('screen-nickname');
+                clearPasscode();
+            } else {
+                goTo('screen-wrong');
+            }
         }
     </script>
 </body>
