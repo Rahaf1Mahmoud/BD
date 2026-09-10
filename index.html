@@ -819,7 +819,7 @@
                     وإن شاء الله يكون عام تحقيق أحلامك وكل إشي ببالك ي <span class="highlight">أجدعع مهندسس</span> وأحلى يزنن ،،
                 </p>
                 <p style="margin-top: 10px;">
-                    احمم 🌝 مش محتاج الموضوع أحكيهه بس عامكك هاد هيكون أحلى من كل لقبل لأنك تعرفت عع <span class="highlight">حدا زيييي</span>
+                    احمم 🌝 مش محتاج الموضوع أحكيهه بس عامكك هاد هيكون أحلى من كل لقبل لأنك تعرفت عع <span class="highlight">حدا زي[...]
                 </p>
                 <p style="margin-top: 15px; font-size: 1.1em;">
                     يلل يبروو إنجويي بيومكك يي أحلى هزونن بحياتيي 😂❤️❤️❤️ ❤️✨
@@ -838,11 +838,11 @@
             <div class="photos-grid layout-side">
                 <div class="polaroid stagger-1">
                     <div class="loading">جاري التحميل...</div>
-                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/1.jpg" alt="Yazan 1" style="display:none;">
+                    <img src="https://github.com/Rahaf1Mahmoud/BD/raw/main/1.jpg" alt="Yazan 1" style="display:none;">
                 </div>
                 <div class="polaroid stagger-2">
                     <div class="loading">جاري التحميل...</div>
-                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/2.jpg" alt="Yazan 2" style="display:none;">
+                    <img src="https://github.com/Rahaf1Mahmoud/BD/raw/main/2.jpg" alt="Yazan 2" style="display:none;">
                 </div>
             </div>
             <button class="btn" onclick="goTo('screen-photos-1')">
@@ -864,11 +864,11 @@
             <div class="photos-grid layout-stack">
                 <div class="polaroid stagger-1">
                     <div class="loading">جاري التحميل...</div>
-                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/3.jpg" alt="Yazan 3" style="display:none;">
+                    <img src="https://github.com/Rahaf1Mahmoud/BD/raw/main/3.jpg" alt="Yazan 3" style="display:none;">
                 </div>
                 <div class="polaroid stagger-2">
                     <div class="loading">جاري التحميل...</div>
-                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/4.jpeg" alt="Yazan 4" style="display:none;">
+                    <img src="https://github.com/Rahaf1Mahmoud/BD/raw/main/4.jpeg" alt="Yazan 4" style="display:none;">
                 </div>
             </div>
             <button class="btn" onclick="goTo('screen-photos-2')">
@@ -890,11 +890,11 @@
             <div class="photos-grid layout-diagonal">
                 <div class="polaroid stagger-1">
                     <div class="loading">جاري التحميل...</div>
-                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/5.jpeg" alt="Yazan 5" style="display:none;">
+                    <img src="https://github.com/Rahaf1Mahmoud/BD/raw/main/5.jpeg" alt="Yazan 5" style="display:none;">
                 </div>
                 <div class="polaroid stagger-2">
                     <div class="loading">جاري التحميل...</div>
-                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/6.jpeg" alt="Yazan 6" style="display:none;">
+                    <img src="https://github.com/Rahaf1Mahmoud/BD/raw/main/6.jpeg" alt="Yazan 6" style="display:none;">
                 </div>
             </div>
             <button class="btn" onclick="goTo('screen-photos-3')">
@@ -916,7 +916,7 @@
             <div class="photos-grid layout-center">
                 <div class="polaroid stagger-1">
                     <div class="loading">جاري التحميل...</div>
-                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/7.jpg" alt="Yazan 7" style="display:none;">
+                    <img src="https://github.com/Rahaf1Mahmoud/BD/raw/main/7.jpg" alt="Yazan 7" style="display:none;">
                 </div>
             </div>
             <button class="btn" onclick="goTo('screen-final')">
@@ -992,47 +992,36 @@
                     this.previousElementSibling.style.display = 'none';
                 };
                 img.onerror = function() {
-                    this.previousElementSibling.textContent = ' فشل التحميل';
+                    this.previousElementSibling.textContent = '❌ فشل التحميل';
                 };
                 // بدء التحميل
                 img.src = img.src;
             });
         }
 
-        // ===== التنقل بين الشاشات =====
-        function goTo(screenId) {
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            document.getElementById(screenId).classList.add('active');
-            if (screenId.includes('photos')) {
-                loadImages();
-            }
-        }
-
         // ===== الرقم السري =====
-        let passcodeInput = '';
-        const CORRECT_PASSCODE = '119';
+        let passcode = '123';
+        let entered = '';
 
         function enterDigit(digit) {
-            if (passcodeInput.length < 3) {
-                passcodeInput += digit;
-                updatePasscodeDisplay();
-                if (passcodeInput.length === 3) {
-                    checkPasscode();
-                }
+            entered += digit;
+            updateDisplay();
+            if (entered.length === 3) {
+                checkPasscode();
             }
         }
 
         function clearPasscode() {
-            passcodeInput = '';
-            updatePasscodeDisplay();
+            entered = '';
+            updateDisplay();
         }
 
-        function updatePasscodeDisplay() {
+        function updateDisplay() {
             for (let i = 0; i < 3; i++) {
                 const dot = document.getElementById(`dot-${i}`);
-                if (i < passcodeInput.length) {
+                if (i < entered.length) {
                     dot.classList.add('filled');
-                    dot.textContent = '●';
+                    dot.textContent = entered[i];
                 } else {
                     dot.classList.remove('filled');
                     dot.textContent = '';
@@ -1042,16 +1031,29 @@
 
         function checkPasscode() {
             setTimeout(() => {
-                if (passcodeInput === CORRECT_PASSCODE) {
+                if (entered === passcode) {
+                    clearPasscode();
                     goTo('screen-nickname');
                 } else {
                     goTo('screen-wrong');
                 }
-            }, 600);
+            }, 300);
         }
 
-        // تحميل الصور في البداية
-        loadImages();
+        // ===== الملاحة بين الشاشات =====
+        function goTo(screenId) {
+            const screens = document.querySelectorAll('.screen');
+            screens.forEach(screen => screen.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+            
+            // تحميل الصور عند الوصول لشاشات الصور
+            if (screenId.includes('photos')) {
+                setTimeout(loadImages, 100);
+            }
+        }
+
+        // تحميل الصور عند تحميل الصفحة
+        window.addEventListener('load', loadImages);
     </script>
 </body>
 </html>
