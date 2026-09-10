@@ -819,7 +819,7 @@
                     وإن شاء الله يكون عام تحقيق أحلامك وكل إشي ببالك ي <span class="highlight">أجدعع مهندسس</span> وأحلى يزنن ،،
                 </p>
                 <p style="margin-top: 10px;">
-                    احمم 🌝 مش محتاج الموضوع أحكيهه بس عامكك هاد هيكون أحلى من كل لقبل لأنك تعرفت عع <span class="highlight">حدا ز[...]
+                    احمم 🌝 مش محتاج الموضوع أحكيهه بس عامكك هاد هيكون أحلى من كل لقبل لأنك تعرفت عع <span class="highlight">حدا ز...</span>
                 </p>
                 <p style="margin-top: 15px; font-size: 1.1em;">
                     يلل يبروو إنجويي بيومكك يي أحلى هزونن بحياتيي 😂❤️❤️❤️ ❤️✨
@@ -838,11 +838,11 @@
             <div class="photos-grid layout-side">
                 <div class="polaroid stagger-1">
                     <div class="loading">جاري التحميل...</div>
-                    <img src="https://cdn.jsdelivr.net/gh/Rahaf1Mahmoud/BD@main/1.jpg" alt="Yazan 1" style="display:none;">
+                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/1.jpg" alt="Yazan 1" style="display:none;">
                 </div>
                 <div class="polaroid stagger-2">
                     <div class="loading">جاري التحميل...</div>
-                    <img src="https://cdn.jsdelivr.net/gh/Rahaf1Mahmoud/BD@main/2.jpg" alt="Yazan 2" style="display:none;">
+                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/2.jpg" alt="Yazan 2" style="display:none;">
                 </div>
             </div>
             <button class="btn" onclick="goTo('screen-photos-1')">
@@ -864,11 +864,11 @@
             <div class="photos-grid layout-stack">
                 <div class="polaroid stagger-1">
                     <div class="loading">جاري التحميل...</div>
-                    <img src="https://cdn.jsdelivr.net/gh/Rahaf1Mahmoud/BD@main/3.jpg" alt="Yazan 3" style="display:none;">
+                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/3.jpg" alt="Yazan 3" style="display:none;">
                 </div>
                 <div class="polaroid stagger-2">
                     <div class="loading">جاري التحميل...</div>
-                    <img src="https://cdn.jsdelivr.net/gh/Rahaf1Mahmoud/BD@main/4.jpeg" alt="Yazan 4" style="display:none;">
+                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/4.jpeg" alt="Yazan 4" style="display:none;">
                 </div>
             </div>
             <button class="btn" onclick="goTo('screen-photos-2')">
@@ -890,11 +890,11 @@
             <div class="photos-grid layout-diagonal">
                 <div class="polaroid stagger-1">
                     <div class="loading">جاري التحميل...</div>
-                    <img src="https://cdn.jsdelivr.net/gh/Rahaf1Mahmoud/BD@main/5.jpeg" alt="Yazan 5" style="display:none;">
+                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/5.jpeg" alt="Yazan 5" style="display:none;">
                 </div>
                 <div class="polaroid stagger-2">
                     <div class="loading">جاري التحميل...</div>
-                    <img src="https://cdn.jsdelivr.net/gh/Rahaf1Mahmoud/BD@main/6.jpeg" alt="Yazan 6" style="display:none;">
+                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/6.jpeg" alt="Yazan 6" style="display:none;">
                 </div>
             </div>
             <button class="btn" onclick="goTo('screen-photos-3')">
@@ -916,7 +916,7 @@
             <div class="photos-grid layout-center">
                 <div class="polaroid stagger-1">
                     <div class="loading">جاري التحميل...</div>
-                    <img src="https://cdn.jsdelivr.net/gh/Rahaf1Mahmoud/BD@main/7.jpg" alt="Yazan 7" style="display:none;">
+                    <img src="https://raw.githubusercontent.com/Rahaf1Mahmoud/BD/main/7.jpg" alt="Yazan 7" style="display:none;">
                 </div>
             </div>
             <button class="btn" onclick="goTo('screen-final')">
@@ -999,48 +999,38 @@
             });
         }
 
-        // تحميل الصور عند تحميل الصفحة
-        window.addEventListener('load', loadImages);
-
         // ===== التنقل بين الشاشات =====
         function goTo(screenId) {
-            document.querySelectorAll('.screen').forEach(s => {
-                s.classList.remove('active');
-            });
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById(screenId).classList.add('active');
-            
-            // إعادة تشغيل animation للعناصر الجديدة
-            const newScreen = document.getElementById(screenId);
-            newScreen.querySelectorAll('.fade-in-up, .stagger-1, .stagger-2, .stagger-3').forEach(el => {
-                el.style.animation = 'none';
-                el.offsetHeight; // trigger reflow
-                el.style.animation = null;
-            });
-
-            // محاولة تحميل الصور مجددًا إذا كانت موجودة في الشاشة الحالية
-            if (newScreen.querySelector('.polaroid img')) {
+            if (screenId.includes('photos')) {
                 loadImages();
             }
         }
 
         // ===== الرقم السري =====
-        let passcode = '';
-        const correctPasscode = '119';
+        let passcodeInput = '';
+        const CORRECT_PASSCODE = '120';
 
         function enterDigit(digit) {
-            if (passcode.length < 3) {
-                passcode += digit;
-                updateDisplay();
-                if (passcode.length === 3) {
-                    setTimeout(checkPasscode, 300);
+            if (passcodeInput.length < 3) {
+                passcodeInput += digit;
+                updatePasscodeDisplay();
+                if (passcodeInput.length === 3) {
+                    checkPasscode();
                 }
             }
         }
 
-        function updateDisplay() {
+        function clearPasscode() {
+            passcodeInput = '';
+            updatePasscodeDisplay();
+        }
+
+        function updatePasscodeDisplay() {
             for (let i = 0; i < 3; i++) {
                 const dot = document.getElementById(`dot-${i}`);
-                if (i < passcode.length) {
+                if (i < passcodeInput.length) {
                     dot.classList.add('filled');
                     dot.textContent = '●';
                 } else {
@@ -1050,19 +1040,18 @@
             }
         }
 
-        function clearPasscode() {
-            passcode = '';
-            updateDisplay();
+        function checkPasscode() {
+            setTimeout(() => {
+                if (passcodeInput === CORRECT_PASSCODE) {
+                    goTo('screen-nickname');
+                } else {
+                    goTo('screen-wrong');
+                }
+            }, 600);
         }
 
-        function checkPasscode() {
-            if (passcode === correctPasscode) {
-                goTo('screen-nickname');
-                clearPasscode();
-            } else {
-                goTo('screen-wrong');
-            }
-        }
+        // تحميل الصور في البداية
+        loadImages();
     </script>
 </body>
 </html>
